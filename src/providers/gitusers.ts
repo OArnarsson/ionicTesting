@@ -13,7 +13,22 @@ export class GitUsers {
 
   // Load all github users
   load(): Observable<User[]> {
-    return this.http.get(`${this.githubApiUrl}/users`)
+    return this.http.get(`${this.githubApiUrl}/users/oarnarsson/followers`)
         .map(res => <User[]>res.json());
+  }
+
+  loadDetails(login: string): Observable<User> {
+    return this.http.get(`${this.githubApiUrl}/users/${login}`)
+        .map(res => <User>(res.json()))
+  }
+
+  loadRepos(login: string): Observable<User> {
+    return this.http.get(`${this.githubApiUrl}/users/${login}/repos`)
+        .map(res => <User>(res.json()))
+  }
+
+  searchUsers(searchParam: string): Observable<User[]> {
+    return this.http.get(`${this.githubApiUrl}/search/users?q=${searchParam}`)
+        .map(res => <User[]>(res.json().items))
   }
 }
