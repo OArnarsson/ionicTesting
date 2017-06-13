@@ -10,7 +10,7 @@ import { OrganisationsPage } from '../pages/organisations/organisations';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { GitUsers } from '../providers/gitusers';
+import { GitProvider } from '../providers/gitprovider';
 import { UserDetailsPage } from "../pages/user-details/user-details";
 
 @NgModule({
@@ -37,7 +37,7 @@ import { UserDetailsPage } from "../pages/user-details/user-details";
   providers: [
     StatusBar,
     SplashScreen,
-    GitUsers,
+    GitProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })

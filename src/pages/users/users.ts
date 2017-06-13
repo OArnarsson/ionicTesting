@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { UserDetailsPage } from '../user-details/user-details';
 
-
 import { User } from '../../models/user';
 
-import { GitUsers } from '../../providers/gitusers';
+import { GitProvider } from '../../providers/gitprovider';
 
 @Component({
   selector: 'page-users',
@@ -15,7 +14,7 @@ export class UsersPage {
   users: User[];
   originalUsers: User[];
 
-  constructor(public navCtrl: NavController, private githubUsers: GitUsers) {
+  constructor(public navCtrl: NavController, private githubUsers: GitProvider) {
     githubUsers.load().subscribe(users => {
       this.users = users;
     })
