@@ -44,7 +44,7 @@ page-user-details {
     .userButtons {
         padding: 16px 0;
 
-        .userRepos, .userContact {
+        .userRepos, .userContact, .userFollowers, .userFollowing {
             position: relative;
             display: flex;
             flex-direction: column;
@@ -74,7 +74,7 @@ page-user-details {
                 font-weight: 500;
             }
 
-            .userRepoCounter {
+            .userRepoCounter, .userFollowersCounter, .userFollowingCounter {
                 position: absolute;
                 top: 35px;
                 right: calc(50% - 37px);
@@ -86,6 +86,11 @@ page-user-details {
             }
 
         }
+    }
+
+    .userTimeStamp {
+        text-align: center;
+        color: $color-text-light;
     }
 }
 
