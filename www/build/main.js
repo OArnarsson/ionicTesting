@@ -37740,10 +37740,9 @@ var GitProvider = (function () {
 }());
 GitProvider = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* Injectable */])(),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
 ], GitProvider);
 
-var _a;
 //# sourceMappingURL=gitprovider.js.map
 
 /***/ }),
@@ -55915,6 +55914,7 @@ var UserDetailsPage = (function () {
         this.login = navParams.get('login');
         gitProvider.loadDetails(this.login).subscribe(function (user) {
             _this.user = user;
+            console.log(_this.user);
         });
     }
     UserDetailsPage.prototype.goToRepos = function (login) {
@@ -55928,7 +55928,7 @@ var UserDetailsPage = (function () {
 UserDetailsPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-user-details',template:/*ion-inline-start:"C:\Users\404-TowerNotFound\Documents\GitHub\ionicTesting\src\pages\user-details\user-details.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>{{login}}\'s details</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-list>\n        <div>\n            <div class="userAvatar" ngStyle="{\'background-image\':\'url({{user?.avatar_url}})\'}"></div>\n        </div>\n        <ion-item>\n            <ion-label>Name</ion-label>\n            <ion-badge item-right>{{user?.name}}</ion-badge>\n        </ion-item>\n\n        <ion-item *ngIf="user?.email">\n            <ion-label>Email</ion-label>\n            <ion-badge item-right>{{user?.email}}</ion-badge>\n        </ion-item>\n\n        <ion-item *ngIf="user?.company">\n            <ion-label>Company</ion-label>\n            <ion-badge item-right>{{user?.company}}</ion-badge>\n        </ion-item>\n\n        <ion-item *ngIf="user?.blog">\n            <ion-label>Blog</ion-label>\n            <ion-badge item-right>{{user?.blog}}</ion-badge>\n        </ion-item>\n\n        <ion-item *ngIf="user?.location">\n            <ion-label>Location</ion-label>\n            <ion-badge item-right>{{user?.location}}</ion-badge>\n        </ion-item>\n\n        <ion-item>\n            <ion-label>Hireable</ion-label>\n            <ion-badge *ngIf="user?.hireable" item-right>{{user?.hireable}}</ion-badge>\n            <ion-badge *ngIf="!user?.hireable" item-right>Unknown</ion-badge>\n        </ion-item>\n\n        <ion-item (click)="goToFollowers(user.login)">\n            <ion-label>Followers</ion-label>\n            <ion-badge item-right>{{user?.followers}}</ion-badge>\n        </ion-item>\n\n        <ion-item (click)="goToFollowing(user.login)">\n            <ion-label>Following</ion-label>\n            <ion-badge item-right>{{user?.following}}</ion-badge>\n        </ion-item>\n\n        <ion-item>\n            <ion-label>Member since</ion-label>\n            <ion-badge item-right>{{user?.created_at | date: \'dd MMMM yyyy\'}}</ion-badge>\n        </ion-item>\n\n\n        <ion-item (click)="goToRepos(user.login)">\n            <ion-label>Repos</ion-label>\n            <ion-badge item-right>{{user?.public_repos}}</ion-badge>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"C:\Users\404-TowerNotFound\Documents\GitHub\ionicTesting\src\pages\user-details\user-details.html"*/,
+        selector: 'page-user-details',template:/*ion-inline-start:"C:\Users\404-TowerNotFound\Documents\GitHub\ionicTesting\src\pages\user-details\user-details.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>{{login}}\'s details</ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-grid>\n        <ion-row class="userCard">\n            <ion-col col-5>\n                <img class="userAvatar" src="{{user?.avatar_url}}">\n            </ion-col>\n            <ion-col col-7 class="nameContainer">\n               <h1 class="userName">{{user?.name}}</h1>\n               <h2 class="userLogin">{{user?.login}}</h2>\n            </ion-col>\n        </ion-row>\n        <ion-row class="userButtons">\n            <ion-col col-6 class="userRepos" (click)="goToRepos(user.login)">\n                <i class="fa fa-sitemap" aria-hidden="true"></i>\n                <p>Repositories</p>\n                <ion-badge class="userRepoCounter">{{user?.public_repos}}</ion-badge>\n            </ion-col>\n            <ion-col col-6 class="userContact">\n                <i *ngIf="user?.hireable" class="fa fa-child" aria-hidden="true"></i>\n                <i *ngIf="!user?.hireable" class="fa fa-user" aria-hidden="true"></i>\n                <p>Contact Info</p>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n\n    <ion-list>\n        <ion-item *ngIf="user?.email">\n            <ion-label>Email</ion-label>\n            <ion-badge item-right>{{user?.email}}</ion-badge>\n        </ion-item>\n\n        <ion-item *ngIf="user?.company">\n            <ion-label>Company</ion-label>\n            <ion-badge item-right>{{user?.company}}</ion-badge>\n        </ion-item>\n\n        <ion-item *ngIf="user?.blog">\n            <ion-label>Blog</ion-label>\n            <ion-badge item-right>{{user?.blog}}</ion-badge>\n        </ion-item>\n\n        <ion-item *ngIf="user?.location">\n            <ion-label>Location</ion-label>\n            <ion-badge item-right>{{user?.location}}</ion-badge>\n        </ion-item>\n\n        <ion-item>\n            <ion-label>Hireable</ion-label>\n            <ion-badge *ngIf="user?.hireable" item-right>{{user?.hireable}}</ion-badge>\n            <ion-badge *ngIf="!user?.hireable" item-right>Unknown</ion-badge>\n        </ion-item>\n\n        <ion-item (click)="goToFollowers(user.login)">\n            <ion-label>Followers</ion-label>\n            <ion-badge item-right>{{user?.followers}}</ion-badge>\n        </ion-item>\n\n        <ion-item (click)="goToFollowing(user.login)">\n            <ion-label>Following</ion-label>\n            <ion-badge item-right>{{user?.following}}</ion-badge>\n        </ion-item>\n\n        <ion-item>\n            <ion-label>Member since</ion-label>\n            <ion-badge item-right>{{user?.created_at | date: \'dd MMMM yyyy\'}}</ion-badge>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"C:\Users\404-TowerNotFound\Documents\GitHub\ionicTesting\src\pages\user-details\user-details.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_gitprovider__["a" /* GitProvider */]])
 ], UserDetailsPage);
@@ -56015,10 +56015,6 @@ var UsersPage = (function () {
         this.githubUsers = githubUsers;
         githubUsers.load().subscribe(function (users) {
             _this.users = users;
-        });
-        githubUsers
-            .searchUsers('scotch').subscribe(function (users) {
-            console.log(users);
         });
     }
     UsersPage.prototype.goToDetails = function (login) {

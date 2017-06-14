@@ -1,3 +1,91 @@
 page-user-details {
+    .userCard {
+        position: relative;
+        padding-bottom: 16px;
 
+        &:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -16px;
+            right: -16px;
+            height: 1px;
+            display: block;
+            background: $color-border;
+        }
+
+        .userAvatar {
+            width: 100%;
+            margin: 0 auto;
+            border-radius: 10%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .nameContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+
+            .userName {
+                color: $color-text;
+                font-size: 20px;
+                margin-bottom: 5px;
+            }
+            .userLogin {
+                color: $color-text-light;
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+    .userButtons {
+        padding: 16px 0;
+
+        .userRepos, .userContact {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 42px;
+
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: -16px;
+                right: -16px;
+                height: 1px;
+                display: block;
+                background: $color-border;
+            }
+
+            i {
+                height: 58px;
+            }
+
+            p {
+                margin-top: 0;
+                font-size: 16px;
+                font-weight: 500;
+            }
+
+            .userRepoCounter {
+                position: absolute;
+                top: 35px;
+                right: 42px;
+
+                padding-left: 6px;
+                padding-right: 6px;
+
+                font-size: 12px;
+            }
+
+        }
+    }
 }
+

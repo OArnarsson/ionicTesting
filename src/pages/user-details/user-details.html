@@ -5,15 +5,31 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-list>
-        <div>
-            <div class="userAvatar" ngStyle="{'background-image':'url({{user?.avatar_url}})'}"></div>
-        </div>
-        <ion-item>
-            <ion-label>Name</ion-label>
-            <ion-badge item-right>{{user?.name}}</ion-badge>
-        </ion-item>
+    <ion-grid>
+        <ion-row class="userCard">
+            <ion-col col-5>
+                <img class="userAvatar" src="{{user?.avatar_url}}">
+            </ion-col>
+            <ion-col col-7 class="nameContainer">
+               <h1 class="userName">{{user?.name}}</h1>
+               <h2 class="userLogin">{{user?.login}}</h2>
+            </ion-col>
+        </ion-row>
+        <ion-row class="userButtons">
+            <ion-col col-6 class="userRepos" (click)="goToRepos(user.login)">
+                <i class="fa fa-sitemap" aria-hidden="true"></i>
+                <p>Repositories</p>
+                <ion-badge class="userRepoCounter">{{user?.public_repos}}</ion-badge>
+            </ion-col>
+            <ion-col col-6 class="userContact">
+                <i *ngIf="user?.hireable" class="fa fa-child" aria-hidden="true"></i>
+                <i *ngIf="!user?.hireable" class="fa fa-user" aria-hidden="true"></i>
+                <p>Contact Info</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
+    <ion-list>
         <ion-item *ngIf="user?.email">
             <ion-label>Email</ion-label>
             <ion-badge item-right>{{user?.email}}</ion-badge>
@@ -53,12 +69,6 @@
         <ion-item>
             <ion-label>Member since</ion-label>
             <ion-badge item-right>{{user?.created_at | date: 'dd MMMM yyyy'}}</ion-badge>
-        </ion-item>
-
-
-        <ion-item (click)="goToRepos(user.login)">
-            <ion-label>Repos</ion-label>
-            <ion-badge item-right>{{user?.public_repos}}</ion-badge>
         </ion-item>
     </ion-list>
 </ion-content>
