@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>{{login}}'s details</ion-title>
+        <ion-title>{{login}}'s profile</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -16,24 +16,22 @@
             </ion-col>
         </ion-row>
         <ion-row class="userButtons">
-            <ion-col col-6 class="userRepos" (click)="goToRepos(user.login)">
+            <ion-col col-3 class="userRepos" (click)="goToRepos(user.login)">
                 <i class="fa fa-sitemap" aria-hidden="true"></i>
                 <p>Repositories</p>
                 <ion-badge class="userRepoCounter">{{user?.public_repos}}</ion-badge>
             </ion-col>
-            <ion-col col-6 class="userContact">
+            <ion-col col-3 class="userContact" (click)="openInfoModal()">
                 <i *ngIf="user?.hireable" class="fa fa-child" aria-hidden="true"></i>
                 <i *ngIf="!user?.hireable" class="fa fa-user" aria-hidden="true"></i>
                 <p>Contact Info</p>
             </ion-col>
-        </ion-row>
-        <ion-row class="userButtons">
-            <ion-col col-6 class="userFollowers" (click)="goToFollowers(user.login)">
+            <ion-col col-3 class="userFollowers" (click)="goToFollowers(user.login)">
                 <i class="fa fa-users" aria-hidden="true"></i>
                 <p>Followers</p>
                 <ion-badge class="userFollowersCounter">{{user?.followers}}</ion-badge>
             </ion-col>
-            <ion-col col-6 class="userFollowing" (click)="goToFollowing(user.login)">
+            <ion-col col-3 class="userFollowing" (click)="goToFollowing(user.login)">
                 <i class="fa fa-address-book" aria-hidden="true"></i>
                 <p>Following</p>
                 <ion-badge class="userFollowingCounter">{{user?.following}}</ion-badge>
@@ -45,26 +43,4 @@
             </ion-col>
         </ion-row>
     </ion-grid>
-
-    <ion-list>
-        <ion-item *ngIf="user?.email">
-            <ion-label>Email</ion-label>
-            <ion-badge item-right>{{user?.email}}</ion-badge>
-        </ion-item>
-
-        <ion-item *ngIf="user?.company">
-            <ion-label>Company</ion-label>
-            <ion-badge item-right>{{user?.company}}</ion-badge>
-        </ion-item>
-
-        <ion-item *ngIf="user?.blog">
-            <ion-label>Blog</ion-label>
-            <ion-badge item-right>{{user?.blog}}</ion-badge>
-        </ion-item>
-
-        <ion-item *ngIf="user?.location">
-            <ion-label>Location</ion-label>
-            <ion-badge item-right>{{user?.location}}</ion-badge>
-        </ion-item>
-    </ion-list>
 </ion-content>

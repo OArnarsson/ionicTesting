@@ -1,0 +1,61 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            {{user?.login}}'s details
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span ion-text color="primary" showWhen="ios">Cancel</span>
+                <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-avatar>
+            <img src="{{user?.avatar_url}}">
+        </ion-avatar>
+        <ion-card-content>
+            <ion-card-title class="userName">{{user?.name}}</ion-card-title>
+            <p>{{user?.bio}}</p>
+
+            <ion-item>
+                <ion-label>Available for hire</ion-label>
+                <p *ngIf="user?.hireable" item-right><i class="fa fa-check" aria-hidden="true"></i></p>
+                <p *ngIf="!user?.hireable" item-right>Unknown</p>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Email</ion-label>
+                <p *ngIf="user?.email" item-right>{{user?.email}}</p>
+                <p *ngIf="!user?.email" item-right><i class="fa fa-question" aria-hidden="true"></i></p>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Company</ion-label>
+                <p *ngIf="user?.company" item-right>{{user?.company}}</p>
+                <p *ngIf="!user?.company" item-right><i class="fa fa-question" aria-hidden="true"></i></p>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Website</ion-label>
+                <p *ngIf="user?.blog" item-right>{{user?.blog}}</p>
+                <p *ngIf="!user?.blog" item-right><i class="fa fa-question" aria-hidden="true"></i></p>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Location</ion-label>
+                <p *ngIf="user?.location" item-right>{{user?.location}}</p>
+                <p *ngIf="!user?.location" item-right><i class="fa fa-question" aria-hidden="true"></i></p>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Member since</ion-label>
+                <p item-right>{{user?.created_at | date: 'dd MMMM yyyy'}}</p>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>
