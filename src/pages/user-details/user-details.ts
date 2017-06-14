@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/user';
-import { GitUsers } from "../../providers/gitusers";
+import { GitProvider } from "../../providers/gitprovider";
+import { ReposPage } from '../repos/repos'
+
 
 /**
  * Generated class for the UserDetailsPage page.
@@ -18,12 +20,16 @@ export class UserDetailsPage {
   user: User;
   login: string;
 
-  constructor(public navCtrl: NavController, private navParams: NavParams, private githubUsers: GitUsers) {
+  constructor(public navCtrl: NavController, private navParams: NavParams, private gitProvider: GitProvider) {
     this.login = navParams.get('login');
-    githubUsers.loadDetails(this.login).subscribe(user => {
+    gitProvider.loadDetails(this.login).subscribe(user => {
       this.user = user;
-      console.log(user)
+      console.log(this.user);
     })
+  }
+
+  goToRepos(login: string) {
+    this.navCtrl.push(ReposPage, {login});
   }
 
   ionViewDidLoad() {
