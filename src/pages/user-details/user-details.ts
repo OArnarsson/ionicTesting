@@ -24,8 +24,7 @@ export class UserDetailsPage {
   constructor(public navCtrl: NavController, private navParams: NavParams, private gitProvider: GitProvider, public modalCtrl: ModalController) {
     this.login = navParams.get('login');
     gitProvider.loadDetails(this.login).subscribe(user => {
-      this.user = user;
-      console.log(this.user);
+      this.user = user
     })
   }
 
@@ -39,7 +38,7 @@ export class UserDetailsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UserDetailsPage');
+    //console.log('ionViewDidLoad UserDetailsPage');
   }
 
 }

@@ -21,7 +21,6 @@ export class GitProvider {
 
   // Load all github users
   load(): Observable<User[]> {
-    console.log(this.buildUrl('/users/oarnarsson/followers'));
     return this.http.get(this.buildUrl('/users/oarnarsson/followers'))
         .map(res => <User[]>res.json());
   }
@@ -32,8 +31,18 @@ export class GitProvider {
   }
 
   loadRepos(login: string): Observable<Repo[]> {
-    return this.http.get(this.buildUrl(`/users/${login}/repos`))
-        .map(res => <Repo[]>(res.json()))
+      return this.http.get(this.buildUrl(`/users/${login}/repos`))
+          .map(res => <Repo[]>(res.json()))
+  }
+
+  loadFollowers(login: string): Observable<User[]> {
+    return this.http.get(this.buildUrl(`/users/${login}/followers`))
+        .map(res => <User[]>(res.json()))
+  }
+
+  loadFollowing(login: string): Observable<User[]> {
+    return this.http.get(this.buildUrl(`/users/${login}/following`))
+        .map(res => <User[]>(res.json()))
   }
 
   searchUsers(searchParam: string): Observable<User[]> {

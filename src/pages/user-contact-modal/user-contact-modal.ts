@@ -21,7 +21,7 @@ export class UserContactModalPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UserContactModalPage');
+    //console.log('ionViewDidLoad UserContactModalPage');
   }
 
   dismiss() {

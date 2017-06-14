@@ -18,7 +18,7 @@ export class FollowingPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FollowingPage');
+    //console.log('ionViewDidLoad FollowingPage');
   }
 
 }

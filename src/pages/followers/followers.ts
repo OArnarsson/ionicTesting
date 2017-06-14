@@ -18,7 +18,7 @@ export class FollowersPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FollowersPage');
+    //console.log('ionViewDidLoad FollowersPage');
   }
 
 }

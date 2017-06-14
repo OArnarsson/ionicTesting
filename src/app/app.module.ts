@@ -6,7 +6,6 @@ import { MyApp } from './app.component';
 
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
-import { OrganisationsPage } from '../pages/organisations/organisations';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,7 +18,6 @@ import {UserContactModalPage} from "../pages/user-contact-modal/user-contact-mod
     MyApp,
     UsersPage,
     ReposPage,
-    OrganisationsPage,
     UserDetailsPage,
     UserContactModalPage
   ],
@@ -33,7 +31,6 @@ import {UserContactModalPage} from "../pages/user-contact-modal/user-contact-mod
     MyApp,
     UsersPage,
     ReposPage,
-    OrganisationsPage,
     UserDetailsPage,
     UserContactModalPage
   ],
