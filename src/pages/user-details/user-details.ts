@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { User } from '../../models/user';
 import { GitProvider } from "../../providers/gitprovider";
 import { ReposPage } from '../repos/repos'
+import { UserContactModalPage} from '../user-contact-modal/user-contact-modal'
 
 
 /**
@@ -20,11 +21,10 @@ export class UserDetailsPage {
   user: User;
   login: string;
 
-  constructor(public navCtrl: NavController, private navParams: NavParams, private gitProvider: GitProvider) {
+  constructor(public navCtrl: NavController, private navParams: NavParams, private gitProvider: GitProvider, public modalCtrl: ModalController) {
     this.login = navParams.get('login');
     gitProvider.loadDetails(this.login).subscribe(user => {
-      this.user = user;
-      console.log(this.user);
+      this.user = user
     })
   }
 
@@ -32,8 +32,13 @@ export class UserDetailsPage {
     this.navCtrl.push(ReposPage, {login});
   }
 
+  openInfoModal() {
+    let contactInfoModal = this.modalCtrl.create(UserContactModalPage, this.user);
+    contactInfoModal.present();
+  }
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UserDetailsPage');
+    //console.log('ionViewDidLoad UserDetailsPage');
   }
 
 }

@@ -6,20 +6,20 @@ import { MyApp } from './app.component';
 
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
-import { OrganisationsPage } from '../pages/organisations/organisations';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { GitProvider } from '../providers/gitprovider';
 import { UserDetailsPage } from "../pages/user-details/user-details";
+import {UserContactModalPage} from "../pages/user-contact-modal/user-contact-modal";
 
 @NgModule({
   declarations: [
     MyApp,
     UsersPage,
     ReposPage,
-    OrganisationsPage,
-    UserDetailsPage
+    UserDetailsPage,
+    UserContactModalPage
   ],
   imports: [
     BrowserModule,
@@ -31,8 +31,8 @@ import { UserDetailsPage } from "../pages/user-details/user-details";
     MyApp,
     UsersPage,
     ReposPage,
-    OrganisationsPage,
-    UserDetailsPage
+    UserDetailsPage,
+    UserContactModalPage
   ],
   providers: [
     StatusBar,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { GitProvider } from "../../providers/gitprovider";
 import { Repo } from '../../models/repo'
 
@@ -19,6 +19,6 @@ export class ReposPage {
   }
 
   ionViewDidLoad() {
-    console.log('Hello Repos Page');
+    //console.log('Hello Repos Page');
   }
 }
