@@ -46,7 +46,7 @@ export class GitProvider {
   }
 
   searchUsers(searchParam: string): Observable<User[]> {
-    return this.http.get(this.buildUrl(`/search/users?`)+ `&q=${searchParam}`)
+    return this.http.get(this.buildUrl(`/search/users?q=` + searchParam +'&'))
         .map(res => <User[]>(res.json().items))
   }
 }
