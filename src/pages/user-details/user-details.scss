@@ -77,7 +77,7 @@ page-user-details {
             .userRepoCounter {
                 position: absolute;
                 top: 35px;
-                right: 42px;
+                right: calc(50% - 37px);
 
                 padding-left: 6px;
                 padding-right: 6px;
