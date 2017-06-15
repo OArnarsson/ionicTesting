@@ -12,6 +12,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { GitProvider } from '../providers/gitprovider';
 import { UserDetailsPage } from "../pages/user-details/user-details";
 import {UserContactModalPage} from "../pages/user-contact-modal/user-contact-modal";
+import {UserListPage} from "../pages/user-list/user-list";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {UserContactModalPage} from "../pages/user-contact-modal/user-contact-mod
     UsersPage,
     ReposPage,
     UserDetailsPage,
-    UserContactModalPage
+    UserContactModalPage,
+    UserListPage
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import {UserContactModalPage} from "../pages/user-contact-modal/user-contact-mod
     UsersPage,
     ReposPage,
     UserDetailsPage,
-    UserContactModalPage
+    UserContactModalPage,
+    UserListPage
   ],
   providers: [
     StatusBar,

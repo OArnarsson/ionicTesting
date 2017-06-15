@@ -1,5 +1,5 @@
+import {NavController, NavParams} from 'ionic-angular';
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
 import { UserDetailsPage } from '../user-details/user-details';
 
 import { User } from '../../models/user';
@@ -12,12 +12,11 @@ import { GitProvider } from '../../providers/gitprovider';
 })
 export class UsersPage {
   users: User[];
-  originalUsers: User[];
 
-  constructor(public navCtrl: NavController, private githubUsers: GitProvider) {
-    githubUsers.load().subscribe(users => {
-      this.users = users;
-    })
+  constructor(public navCtrl: NavController, public navParams: NavParams, private githubUsers: GitProvider) {
+      githubUsers.load().subscribe(users => {
+        this.users = users;
+      });
   }
 
   goToDetails(login: string) {
@@ -25,13 +24,8 @@ export class UsersPage {
   }
 
   search(searchEvent) {
-    let term = searchEvent.target.value
-    // We will only perform the search if we have 3 or more characters
-    if (term.trim() === '' || term.trim().length < 3) {
-      // Load cached users
-      this.users = this.originalUsers;
-    } else {
-      // Get the searched users from github
+    let term = searchEvent.target.value;
+    if (term.trim() !== '' && term.trim().length > 2) {
       this.githubUsers.searchUsers(term).subscribe(users => {
         this.users = users
       });
