@@ -12,7 +12,6 @@ import { GitProvider } from '../../providers/gitprovider';
 })
 export class UsersPage {
   users: User[];
-  originalUsers: User[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private githubUsers: GitProvider) {
       githubUsers.load().subscribe(users => {
@@ -25,10 +24,8 @@ export class UsersPage {
   }
 
   search(searchEvent) {
-    let term = searchEvent.target.value
-    // We will only perform the search if we have 3 or more characters
+    let term = searchEvent.target.value;
     if (term.trim() !== '' && term.trim().length > 2) {
-      // Get the searched users from github
       this.githubUsers.searchUsers(term).subscribe(users => {
         this.users = users
       });

@@ -19,7 +19,7 @@
             <ion-col col-3 class="userRepos" (click)="goToRepos(user.login)">
                 <i class="fa fa-sitemap" aria-hidden="true"></i>
                 <p>Repositories</p>
-                <ion-badge class="userRepoCounter">{{user?.public_repos}}</ion-badge>
+                <ion-badge class="userRepoCounter">{{user?.public_repos | overHundred}}</ion-badge>
             </ion-col>
             <ion-col col-3 class="userContact" (click)="openInfoModal()">
                 <i *ngIf="user?.hireable" class="fa fa-child" aria-hidden="true"></i>
@@ -29,12 +29,12 @@
             <ion-col col-3 class="userFollowers" (click)="goToFollowers(user.login)">
                 <i class="fa fa-users" aria-hidden="true"></i>
                 <p>Followers</p>
-                <ion-badge class="userFollowersCounter">{{user?.followers}}</ion-badge>
+                <ion-badge class="userFollowersCounter">{{user?.followers | overHundred}}</ion-badge>
             </ion-col>
             <ion-col col-3 class="userFollowing" (click)="goToFollowing(user.login)">
                 <i class="fa fa-address-book" aria-hidden="true"></i>
                 <p>Following</p>
-                <ion-badge class="userFollowingCounter">{{user?.following}}</ion-badge>
+                <ion-badge class="userFollowingCounter">{{user?.following | overHundred}}</ion-badge>
             </ion-col>
         </ion-row>
         <ion-row class="userTimeStamp">
