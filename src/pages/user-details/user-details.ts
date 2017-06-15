@@ -4,28 +4,23 @@ import { User } from '../../models/user';
 import { GitProvider } from "../../providers/gitprovider";
 import { ReposPage } from '../repos/repos'
 import { UserContactModalPage} from '../user-contact-modal/user-contact-modal'
+import {UserListPage} from "../user-list/user-list";
 
 
-/**
- * Generated class for the UserDetailsPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-user-details',
   templateUrl: 'user-details.html',
 })
 export class UserDetailsPage {
-  user: User;
   login: string;
+  user: User;
 
   constructor(public navCtrl: NavController, private navParams: NavParams, private gitProvider: GitProvider, public modalCtrl: ModalController) {
     this.login = navParams.get('login');
-    gitProvider.loadDetails(this.login).subscribe(user => {
+      gitProvider.loadDetails(this.login).subscribe(user => {
       this.user = user
-    })
+    });
   }
 
   goToRepos(login: string) {
@@ -35,6 +30,18 @@ export class UserDetailsPage {
   openInfoModal() {
     let contactInfoModal = this.modalCtrl.create(UserContactModalPage, this.user);
     contactInfoModal.present();
+  }
+
+  goToFollowers() {
+    this.gitProvider.loadFollowers(this.login).subscribe(followers => {
+      this.navCtrl.push(UserListPage, {'users': followers, 'login': this.login, 'type': "followers"});
+    });
+  }
+
+  goToFollowing() {
+    this.gitProvider.loadFollowing(this.login).subscribe(following => {
+      this.navCtrl.push(UserListPage, {'users': following, 'login': this.login, 'type': "follows"});
+    });
   }
 
   ionViewDidLoad() {
