@@ -1,3 +1,15 @@
 page-repos {
-
+    ion-row {
+        justify-content: flex-end;
+        text-align: right;
+        ion-col {
+            &:first-of-type {
+                align-self: flex-start;
+                text-align: left;
+            }
+            i {
+                width: 16px;
+            }
+        }
+    }
 }

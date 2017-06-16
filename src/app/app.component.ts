@@ -7,12 +7,13 @@ import { ReposPage } from '../pages/repos/repos';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Deploy } from '@ionic/cloud-angular';
 
 
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class IonicGithub {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
@@ -23,7 +24,8 @@ export class MyApp {
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    public deploy: Deploy
   ) {
     this.initializeApp();
 
