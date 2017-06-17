@@ -15,8 +15,11 @@ import { GitProvider } from '../providers/gitprovider';
 import { UserDetailsPage } from "../pages/user-details/user-details";
 import { UserContactModalPage } from "../pages/user-contact-modal/user-contact-modal";
 import { UserListPage } from "../pages/user-list/user-list";
+
 import { OverHundredPipe } from '../pipes/overHundred/overHundred';
 import { RepoTypePipe } from '../pipes/repoType/repoType';
+import { LimitToPipe } from '../pipes/limitTo/limitTo';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -33,7 +36,9 @@ const cloudSettings: CloudSettings = {
     UserContactModalPage,
     UserListPage,
     OverHundredPipe,
-    RepoTypePipe
+    RepoTypePipe,
+    LimitToPipe,
+    TimeAgoPipe,
   ],
   imports: [
     BrowserModule,
