@@ -1,41 +1,52 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button icon-only menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>
-      {{login}}'s repositories
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <button ion-button icon-only menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            {{login}}'s repositories
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list no-lines>
-    <ion-item ion-item *ngFor="let repo of repos">
-      <ion-row>
-        <ion-col>
-          {{ repo.name }}
-        </ion-col>
-        <ion-col>
-          <span>{{ repo.stargazers_count | overHundred }}</span>
-          <i class="fa fa-star" aria-hidden="true"></i>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-badge [ngStyle]="{'background-color': repo.language | repoType}">{{ repo.language }}</ion-badge>
-        </ion-col>
-        <ion-col>
-          <span>{{ repo.watchers | overHundred }}</span>
-          <i class="fa fa-eye" aria-hidden="true"></i>
-        </ion-col>
-        <ion-col>
-          <span>{{ repo.stargazers_count | overHundred }}</span>
-          <i class="fa fa-code-fork" aria-hidden="true"></i>
-        </ion-col>
-      </ion-row>
+    <ion-list no-lines>
+        <ion-item class="repoCard" ion-item *ngFor="let repo of repos">
+
+            <ion-row justify-content-between>
+                <ion-row class="leftRow">
+                    <ion-col class="repoName">
+                        {{ repo.name | limitTo: 20 }}
+                    </ion-col>
+                    <ion-col class="repoLang">
+                        <ion-badge *ngIf="repo.language" [ngStyle]="{'background-color': repo.language | repoType}">{{ repo.language }}</ion-badge>
+                        <ion-badge *ngIf="!repo.language" [ngStyle]="{'background-color': 'Unknown' | repoType}">Unknown</ion-badge>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row class="midRow">
+                    <ion-col class="repoUpdate">
+                        Updated {{ repo.pushed_at | timeAgo }}
+                    </ion-col>
+                    <ion-col class="repoWatchers">
+                        <span>{{ repo.watchers_count | overHundred }}</span>
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row class="rightRow">
+                    <ion-col class="repoStars">
+                        <span>{{ repo.stargazers_count | overHundred }}</span>
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                    </ion-col>
+                    <ion-col class="repoForks">
+                        <span>{{ repo.forks_count | overHundred }}</span>
+                        <i class="fa fa-code-fork" aria-hidden="true"></i>
+                    </ion-col>
+                </ion-row>
+            </ion-row>
 
 
-    </ion-item>
-  </ion-list>
+        </ion-item>
+    </ion-list>
 </ion-content>

@@ -31,7 +31,7 @@ export class GitProvider {
   }
 
   loadRepos(login: string): Observable<Repo[]> {
-      return this.http.get(this.buildUrl(`/users/${login}/repos`))
+      return this.http.get(this.buildUrl(`/users/${login}/repos?sort=pushed_at`))
           .map(res => <Repo[]>(res.json()))
   }
 

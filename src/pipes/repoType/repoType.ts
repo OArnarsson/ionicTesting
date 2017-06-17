@@ -10,7 +10,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'repoType',
 })
 export class RepoTypePipe implements PipeTransform {
-  //Thanks to doda for color codes.
+
   colors = {
     "ABAP": "#E8274B",
     "AGS Script": "#B9D9FF",
@@ -209,7 +209,8 @@ export class RepoTypePipe implements PipeTransform {
     "nesC": "#94B0C7",
     "ooc": "#b0b77e",
     "wisp": "#7582D1",
-    "xBase": "#403a40"
+    "xBase": "#403a40",
+    "Unknown": "#bbb"
   }
 
   /**
