@@ -1,3 +1,54 @@
 page-repos {
+    ion-item.repoCard {
+        width: 96%;
+        padding: 2px 20px;
+        margin: 10px 2%;
+        box-shadow: 0px 4px 15px -4px rgba(0,0,0,0.2);
 
+        ion-row{
+            flex-wrap: nowrap;
+        }
+
+
+        .leftRow, .midRow, .rightRow {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            height: 6.6rem;
+
+            i {
+                width: 16px;
+            }
+        }
+
+        .leftRow {
+            flex-grow: 1;
+            .reponame {
+                font-size: 15px;
+            }
+        }
+        
+        .midRow {
+            padding-right: 12px;
+
+            .repoUpdate {
+                text-align: left;
+            }
+            .repoWatchers {
+                text-align: right;
+            }
+        }
+
+        .rightRow {
+            align-self: flex-end;
+            text-align: right;
+        }
+
+
+        .repoUpdate {
+            font-size: 12px;
+            color: $color-text-light;
+        }
+    }
 }
