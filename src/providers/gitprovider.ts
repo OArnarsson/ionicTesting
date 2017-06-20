@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 
 import { User } from '../models/user';
 import { Repo } from '../models/repo';
+import {FeedEvent} from "../models/feedEvent";
 
 @Injectable()
 export class GitProvider {
@@ -28,6 +29,11 @@ export class GitProvider {
   loadDetails(login: string): Observable<User> {
     return this.http.get(this.buildUrl(`/users/${login}`))
         .map(res => <User>(res.json()))
+  }
+
+  loadFeed(login: string): Observable<FeedEvent[]> {
+    return this.http.get(this.buildUrl(`/users/${login}/received_events`))
+        .map(res => <FeedEvent[]>(res.json()))
   }
 
   loadRepos(login: string): Observable<Repo[]> {

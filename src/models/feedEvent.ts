@@ -3,7 +3,7 @@
 
 export interface FeedEvent {
     "type": string,
-    "login": string,
-    "repoName": "reactjs/react-modal",
-
+    "created_at": string,
+    "actor": { "login": string },
+    "repo": { "name": string }
 }
