@@ -1,6 +1,8 @@
 // Model based on data from https://api.github.com/users/{username}
 // Skippings field I don't find interesting
 
+import {FeedEvent} from "./feedEvent";
+
 export interface User {
     "id": number,                   // GITHUB ID
     "name": string,                 // REAL NAME
@@ -21,5 +23,6 @@ export interface User {
     "following_url": string,        // LINK TO FOLLOWING
     "created_at": string,           // TIME CREATED
     "updated_at": string,           // LAST SEEN
-    "received_events_url": string,  // FEED
+    "received_events_url": string,  // LINK TO FETCH FEED
+    "feed": FeedEvent[];            // FEED
 }

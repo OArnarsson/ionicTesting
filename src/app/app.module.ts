@@ -8,6 +8,7 @@ import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+import { MobileAccessibility } from '@ionic-native/mobile-accessibility'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -20,6 +21,8 @@ import { OverHundredPipe } from '../pipes/overHundred/overHundred';
 import { RepoTypePipe } from '../pipes/repoType/repoType';
 import { LimitToPipe } from '../pipes/limitTo/limitTo';
 import { TimeAgoPipe } from 'time-ago-pipe';
+import { FeedTypePipe } from '../pipes/feedType/feedType';
+import { FeedActionPipe } from '../pipes/feedAction/feedAction';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -39,12 +42,14 @@ const cloudSettings: CloudSettings = {
     RepoTypePipe,
     LimitToPipe,
     TimeAgoPipe,
+    FeedTypePipe,
+    FeedActionPipe,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(IonicGithub),
     CloudModule.forRoot(cloudSettings),
-    HttpModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -59,6 +64,7 @@ const cloudSettings: CloudSettings = {
     StatusBar,
     SplashScreen,
     GitProvider,
+    MobileAccessibility,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })

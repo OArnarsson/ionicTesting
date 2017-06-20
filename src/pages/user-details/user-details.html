@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>{{login}}'s profile</ion-title>
+        <ion-title>{{ login }}'s profile</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -8,18 +8,18 @@
     <ion-grid>
         <ion-row class="userCard">
             <ion-col col-5>
-                <img class="userAvatar" src="{{user?.avatar_url}}">
+                <img class="userAvatar" src="{{ user?.avatar_url }}">
             </ion-col>
             <ion-col col-7 class="nameContainer">
-               <h1 class="userName">{{user?.name}}</h1>
-               <h2 class="userLogin">{{user?.login}}</h2>
+                <h1 class="userName">{{ user?.name }}</h1>
+                <h2 class="userLogin">{{ user?.login }}</h2>
             </ion-col>
         </ion-row>
         <ion-row class="userButtons">
             <ion-col col-3 class="userRepos" (click)="goToRepos(user.login)">
                 <i class="fa fa-sitemap" aria-hidden="true"></i>
                 <p>Repositories</p>
-                <ion-badge class="userRepoCounter">{{user?.public_repos | overHundred}}</ion-badge>
+                <ion-badge class="userRepoCounter">{{ user?.public_repos | overHundred }}</ion-badge>
             </ion-col>
             <ion-col col-3 class="userContact" (click)="openInfoModal()">
                 <i *ngIf="user?.hireable" class="fa fa-child" aria-hidden="true"></i>
@@ -29,17 +29,30 @@
             <ion-col col-3 class="userFollowers" (click)="goToFollowers(user.login)">
                 <i class="fa fa-users" aria-hidden="true"></i>
                 <p>Followers</p>
-                <ion-badge class="userFollowersCounter">{{user?.followers | overHundred}}</ion-badge>
+                <ion-badge class="userFollowersCounter">{{ user?.followers | overHundred }}</ion-badge>
             </ion-col>
             <ion-col col-3 class="userFollowing" (click)="goToFollowing(user.login)">
                 <i class="fa fa-address-book" aria-hidden="true"></i>
                 <p>Following</p>
-                <ion-badge class="userFollowingCounter">{{user?.following | overHundred}}</ion-badge>
+                <ion-badge class="userFollowingCounter">{{ user?.following | overHundred }}</ion-badge>
             </ion-col>
         </ion-row>
+
+
+        <ion-list class="userFeed">
+            <ion-row>
+                {{ user?.login }}'s feed
+            </ion-row>
+            <ion-row class="feedItem" *ngFor="let item of user?.feed">
+                <span class="feedType" [innerHTML]="item.type | feedType"></span>
+                <span class="feedInfo">{{(item.actor.login + ' ' + (item.type | feedAction) + ' ' + item.repo.name) | limitTo: 44}}</span>
+                <span class="feedTimestamp">{{ item.created_at | timeAgo }}</span>
+            </ion-row>
+        </ion-list>
+
         <ion-row class="userTimeStamp">
             <ion-col col-12>
-                <p>Last seen: {{user?.updated_at | date: 'dd MMMM yyyy'}}</p>
+                <p>Last seen: {{ user?.updated_at | date: 'dd MMMM yyyy' }}</p>
             </ion-col>
         </ion-row>
     </ion-grid>

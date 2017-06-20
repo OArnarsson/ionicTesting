@@ -8,6 +8,7 @@ import { ReposPage } from '../pages/repos/repos';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Deploy } from '@ionic/cloud-angular';
+import { MobileAccessibility } from '@ionic-native/mobile-accessibility'
 
 
 @Component({
@@ -16,7 +17,6 @@ import { Deploy } from '@ionic/cloud-angular';
 export class IonicGithub {
   @ViewChild(Nav) nav: Nav;
 
-  // make HelloIonicPage the root (or first) page
   rootPage = UsersPage;
   pages: Array<{title: string, component: any}>;
 
@@ -25,11 +25,11 @@ export class IonicGithub {
     public menu: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public deploy: Deploy
+    public deploy: Deploy,
+    private mobileAccessibility: MobileAccessibility
   ) {
     this.initializeApp();
 
-    // set our app's pages
     this.pages = [
       { title: 'Users', component: UsersPage },
       { title: 'Repositories', component: ReposPage }
@@ -38,10 +38,10 @@ export class IonicGithub {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.mobileAccessibility.usePreferredTextZoom(false);
+      console.log(this.mobileAccessibility.getTextZoomCallback());
     });
   }
 
