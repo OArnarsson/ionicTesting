@@ -29,7 +29,7 @@
 
             <ion-item>
                 <ion-label>Email</ion-label>
-                <p *ngIf="user?.email" item-right>{{user?.email}}</p>
+                <p *ngIf="user?.email" item-right><a href="mailto:{{user?.email}}">{{user?.email}}</a></p>
                 <p *ngIf="!user?.email" item-right><i class="fa fa-question" aria-hidden="true"></i></p>
             </ion-item>
 
