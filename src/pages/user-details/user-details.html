@@ -45,7 +45,10 @@
             </ion-row>
             <ion-row class="feedItem" *ngFor="let item of user?.feed">
                 <span class="feedType" [innerHTML]="item.type | feedType"></span>
-                <span class="feedInfo">{{(item.actor.login + ' ' + (item.type | feedAction) + ' ' + item.repo.name) | limitTo: 44}}</span>
+                <span class="feedInfo">
+                    <!-- TODO: Swap out pipe for ellipsis and split into span links-->
+                    {{(item.actor.login + ' ' + (item.type | feedAction) + ' ' + item.repo.name) | limitTo: 44}}
+                </span>
                 <span class="feedTimestamp">{{ item.created_at | timeAgo }}</span>
             </ion-row>
         </ion-list>

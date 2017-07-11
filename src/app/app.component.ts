@@ -1,14 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Platform, MenuController, Nav } from 'ionic-angular';
+import { Platform, MenuController, Nav, ToastController } from 'ionic-angular';
 
 import { UsersPage } from '../pages/users/users';
 import { ReposPage } from '../pages/repos/repos';
 
+import { Deploy } from '@ionic/cloud-angular';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Deploy } from '@ionic/cloud-angular';
-import { MobileAccessibility } from '@ionic-native/mobile-accessibility'
+import { MobileAccessibility } from '@ionic-native/mobile-accessibility';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class IonicGithub {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     public deploy: Deploy,
-    private mobileAccessibility: MobileAccessibility
+    private mobileAccessibility: MobileAccessibility,
+    private toastCtrl: ToastController
   ) {
     this.initializeApp();
 
@@ -40,9 +42,18 @@ export class IonicGithub {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.mobileAccessibility.usePreferredTextZoom(false);
-      console.log(this.mobileAccessibility.getTextZoomCallback());
+      this.mobileAccessibility.setTextZoom(85.7);
     });
+  }
+
+  presentToast(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 8000,
+      position: 'bottom'
+    });
+
+    toast.present();
   }
 
   openPage(page) {
