@@ -9,6 +9,7 @@ import { ReposPage } from '../pages/repos/repos';
 
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { MobileAccessibility } from '@ionic-native/mobile-accessibility'
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -65,6 +66,7 @@ const cloudSettings: CloudSettings = {
     SplashScreen,
     GitProvider,
     MobileAccessibility,
+    LocalNotifications,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })

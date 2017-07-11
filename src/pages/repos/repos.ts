@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { GitProvider } from "../../providers/gitprovider";
-import { Repo } from '../../models/repo'
+import { Repo } from '../../models/repo';
 
 @Component({
   selector: 'page-repos',
