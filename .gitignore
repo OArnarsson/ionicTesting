@@ -63,3 +63,8 @@ www/
 # editor prefs
 .idea
 
+# Non-project-specific build files:
+platforms/
+
+# Plugins
+plugins/
