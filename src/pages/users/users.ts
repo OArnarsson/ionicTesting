@@ -26,13 +26,11 @@ export class UsersPage {
         });
 
         this.platform.ready().then(() => {
-            this.localNotifications.hasPermission().then(function(granted) {
-                if (!granted) {
-                    this.localNotifications.registerPermission();
-                }
+            this.localNotifications.hasPermission().then((missing) => {
+                if (missing) { this.localNotifications.registerPermission(); }
             });
 
-            this.localNotifications.on('click', (notification, state) => {
+            this.localNotifications.on('click', () => {
                 let alert = alertCtrl.create({
                     title: 'Flottur!',
                     subTitle: 'Gerðu eitthvað nett.',
@@ -53,34 +51,43 @@ export class UsersPage {
         let notification = {
             id: notificationID,
             title: 'ionicGithub',
-            text: 'Hey, farðu heim bráðum.',
+            text: 'Hey, farðu heim.',
             at: new Date(year, month, day, 16, 0, 0),
             every: 'day',
-            led: '#A0D'
+            priority: 1,
+            led: '9900DD'
         };
 
-        if (this.localNotifications.isScheduled(notification.id)) {
-            this.presentToast('Notification was already scheduled.');
-        } else {
-            this.localNotifications.schedule(notification);
-            this.presentToast('New notification scheduled @' + d.toTimeString().slice(0, 8));
-        }
+        this.localNotifications.isScheduled(notificationID).then((active) => {
+            if (active) {
+                this.presentToast('Notification has already been scheduled @'
+                    + new Date(notification.at).toString().slice(0, 24));
+            } else {
+                this.localNotifications.schedule(notification);
+                this.presentToast('Notification set everyday @16:00:00');
+            }
+        });
+    }
 
+    clearNotifications() {
+        this.localNotifications.cancelAll().then((() => {
+            this.localNotifications.getAllIds().then((ids) => {
+                if (ids.length < 1) { this.presentToast('Clear status: OK'); }
+                else { this.presentToast('Clear status: ERROR'); }
+            });
+        }));
     }
 
     presentToast(message: string) {
-        let toast = this.toastCtrl.create({
+        this.toastCtrl.create({
             message: message,
-            duration: 2000,
+            duration: 3000,
             position: 'bottom'
-        });
-
-        toast.present();
+        }).present();
     }
 
     goToDetails(login: string) {
         this.navCtrl.push(UserDetailsPage, {login});
-
     }
 
     search(searchEvent) {
